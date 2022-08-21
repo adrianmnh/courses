@@ -23,7 +23,13 @@ timezone: American/New_York
 
 title: Adrian Noa                          # the main title
 
-tagline: Software Engineer and Full Stack Developer ➤ Food Service Professional   # it will display as the sub-title
+tagline: |
+  ➤ Software Engineer 
+  ➤ Full Stack Developer 
+  ➤ Food Service Professional   
+
+# it will display as the sub-title
+
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
