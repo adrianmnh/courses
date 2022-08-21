@@ -23,10 +23,11 @@ timezone: American/New_York
 
 title: Adrian Noa                          # the main title
 
-tagline: |
+tagline: '
   ➤ Software Engineer 
   ➤ Full Stack Developer 
-  ➤ Food Service Professional   
+  ➤ Food Service Professional
+  '
 
 # it will display as the sub-title
 
