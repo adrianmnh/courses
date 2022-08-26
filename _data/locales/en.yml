@@ -14,7 +14,10 @@ tabs:
   categories: Categories
   tags: Tags
   archives: Archives
-  about: About
+  datamodeling: Data Modeling
+  datascience: Applied Data Science
+  computervision: Computer Vision
+
 
 # the text displayed in the search bar & search results
 search:
