@@ -30,3 +30,13 @@ What is a fully qualified object in MYSQL?
 - GDPR : European Union General Data Protection Regulation(applies to global companies)
 
 - Dynamic Data masking : Hiding information based upon provildge. Supported by most ANSCI SQL databases
+
+
+```mermaid
+
+flowchart LR
+    A[Hard] -->|Text| B(Round)
+    B --> C{Decision}
+    C -->|One| D[Result 1]
+    C -->|Two| E[Result 2]
+```
