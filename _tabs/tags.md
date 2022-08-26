@@ -1,6 +1,6 @@
 ---
 layout: tags
 title: Tags
-icon: fas fa-tag
+icon: fa-solid fa-hashtag
 order: 2
 ---
