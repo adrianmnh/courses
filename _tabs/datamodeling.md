@@ -1,5 +1,5 @@
 ---
-title: CSCI 381 - Data Modeling and Advanced Database Systems
+title: Data Modeling
 icon: fa-solid fa-database
 order: 3
 ---

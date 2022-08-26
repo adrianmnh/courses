@@ -1,5 +1,5 @@
 ---
-title: CSCI 381 - Applied Data Science
+title: Applied Data Science
 icon: fa-solid fa-file-waveform
 order: 4
 ---

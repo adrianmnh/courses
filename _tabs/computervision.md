@@ -1,5 +1,5 @@
 ---
-title: CSCI 381 - Computer Vision
+title: Computer Vision
 icon: fa-solid fa-eye
 order: 5
 ---
