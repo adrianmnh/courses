@@ -64,6 +64,27 @@ Recreating the travel database. Add tables **manufacturers** and **airplanes**
 
 <img src="/dm/03-06.png">
 
-pasacal case:
+**snake case** seen above
+
+**pasacal case**:
 * 1st letter of everyword is uppercase
 
+Inserting into the two tables
+
+<img src="/dm/03-06.png">
+
+<img src="/dm/03-07.png">
+
+<img src="/dm/03-08.png">
+
+<img src="/dm/03-09.png">
+
+<img src="/dm/03-10.png">
+
+<img src="/dm/03-11.png">
+
+<img src="/dm/03-12.png">
+
+## Stored Procedures
+
+<img src="/dm/03-13.png">
