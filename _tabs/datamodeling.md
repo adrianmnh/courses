@@ -64,5 +64,6 @@ Recreating the travel database. Add tables **manufacturers** and **airplanes**
 
 <img src="/dm/03-06.png">
 
-
+pasacal case:
+* 1st letter of everyword is uppercase
 
