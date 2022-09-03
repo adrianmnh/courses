@@ -88,3 +88,17 @@ Inserting into the two tables
 ## Stored Procedures
 
 <img src="/dm/03-13.png">
+
+Would this work in SQL Server? **No, we use EXEC in SQL Server**
+
+<img src="/dm/03-14.png">
+
+### Working with parameters
+
+<img src="/dm/03-15.png">
+
+### What is **deterministic**?
+
+<img src="/dm/03-16.png">
+
+
