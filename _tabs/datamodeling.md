@@ -102,3 +102,19 @@ Would this work in SQL Server? **No, we use EXEC in SQL Server**
 <img src="/dm/03-16.png">
 
 
+# class 4
+
+entity, descriptions, relationships
+
+`physical data model` - specific technologies while logicai]l data model is tech agnostic
+
+conceptual data model - super class entities can derive
+
+Identifying vs non identifying relationships - super class primary key is part of the primary key of the derived entity table
+* solid lines - identifying relationships
+* segmented lines - non identifying
+
+`PDM` - represents detailed technology with implementation concerns
+
+`tablename postfix id` to use as primary keys for erwin physical data model tables
+
