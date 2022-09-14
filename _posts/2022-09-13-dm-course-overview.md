@@ -106,3 +106,6 @@ Fully Qualified tables
 * **instantiation** of LDM
 * detailed technollogy **with implementation concerns such as the target database software and hardware**
 
+<picture>
+<img src="/dm/04-01.png" alt="Data Modeling course overview key points">
+</picture>
