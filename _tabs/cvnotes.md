@@ -1,6 +1,6 @@
-# finish project 8/31 for extra point
+## class 2 8/30
 
-## Threshholding
+# Threshholding
 
 size 256 x 256
 
@@ -33,19 +33,31 @@ Output at a given pixel is a function of
 
 ## Types of Neighborhood
 
-Most common ones
+**Most common ones**
 
-3x3 matrix              5x5
+```
+    [     ]             [           ]
+    [ 3x3 ] matrix      [           ]
+    [     ]             [    5x5    ]
+                        [           ]
+                        [           ]
+```
 
-Other types
+**Other types**
 
-1x2        2x1[]      []_       2x2
-                        []
+```
+    1x1 -> [1][1]        
 
-In general, nxn matrix
-WHere N is an odd number ( so X is in the center)
+    2x1 -> [1]
+        [1]
 
-Neighborhood Operator --  AVERAGING
+    2x2  -> [ ][ ]
+            [ ][ ]
+```
+
+In general, `nxn` matrix -> where N is an odd number ( so X is in the center)
+
+Neighborhood Operator -- **AVERAGING**
 
 * Remove noise from the input image
 * Also called smoothing
@@ -78,9 +90,15 @@ The median takes into account the most recurring values in a set of data, hence 
 
 ## Gaussian Filtering
 
-Masking with a aGaussian mask
+Masking with a Gaussian mask
 
-[1 2 1, 2 4 2, 1 2 1] Gaussian mask, G
+```
+
+    | 1 2 1 |
+    | 2 4 2 | -> Gaussian mask, G
+    | 1 2 1 |
+
+```
 
 [a b c, d x f, g h i] Neighborhood of x
 
@@ -94,60 +112,106 @@ _convolution_
 
 16 = total weight
 
-### Common masks: for noise removal
+## Common masks: for noise removal
 
-3X3 neighborhood
-[1 1 1... ] = 1/9          
-[0 1 0 1 2 1 0 1 0] = 1/6  
-[0 1 0 1 4 1 0 1 0] = 1/8
-[1 1 1 1 8 1 1 1 1] = 1/16
-[1 1 1 1 4 1 1 1 1] = 1/12
-[1 2 1 2 4 2 1 2 1] = 1/16
+### 3X3 neighborhood
+```
+    | 1 1 1 | 
+    | 1 1 1 | = 1/9
+    | 1 1 1 |
 
-5X5 neighborhood
-[1 2 3 2 1, 2 4 6 4 2, 3 6 9 6 3...] = 1/81
+    | 0 1 0 |
+    | 1 2 1 | = 1/6
+    | 0 1 0 |  
 
-[0 3 4 3 0, 3 6 7 6 3, 4 7 8 7 4 ....] = 1/100
+    | 0 1 0 |
+    | 1 4 1 | = 1/8
+    | 0 1 0 |
 
-[1 4 6 4 1 , 4 16 24 16 4, 6 24 36 24 6...] = 1/256
+    | 1 1 1 |
+    | 1 8 1 | = 1/16
+    | 1 1 1 |
+
+    | 1 1 1 |
+    | 1 4 1 | = 1/12
+    | 1 1 1 |
+
+    | 1 2 1 |
+    | 2 4 2 | = 1/16
+    | 1 2 1 |
+```
+
+### 5X5 neighborhood
+```
+    | 1 2 3 2 1 |
+    | 2 4 6 4 2 | 
+    | 3 6 9 6 3 | = 1/81 
+    | 2 4 6 4 2 |
+    | 1 2 3 2 1 |
+
+    | 0 3 4 3 0 |
+    | 3 6 7 6 3 |
+    | 4 7 8 7 4 | = 1/100
+    | 3 6 7 6 3 |
+    | 0 3 4 3 0 |
+
+    | 1  4  6  4 1 |
+    | 4 16 24 16 4 |
+    | 6 24 36 24 6 | = 1/256
+    | 4 16 24 16 4 |
+    | 1  4  6  4 1 |
+```
 
 ### Some faults on the square-based neighborhood smoothing operators
 
 - When can the averaging operators go wrong?
-(THose 3x3 5x5, ... , simple averaging or those Gaussian weighted-averaging operators)
+  - (Those 3x3 5x5, ... , simple averaging or those Gaussian weighted-averaging operators)
 
-[1 1 1]x3 
+```
+| 1 1 1 |
+| 1 1 1 | -> 3x3
+| 1 1 1 |
+
+
 [1 2 1, 242, 1 2 1] 
+
+
 5x5 X in middle
+```
+Consider the following image: empty spaces are 9. the average will be very low, and the median is 0. --->  yields innacurate representation of the images
 
-COnsider the following image: empty spaces are 9. the average will be very low, and the median is 0. --->  yields innacurate representation of the images
+```
+    000000090000000000000
+    000000999000000000000
+    000009999900000000000
+    000099999990000000000
+    000999999999000000000
+    000099999990000000000
+    000009999900000000000
+    000000999000000000000
+    000000090000000000000
+```
 
-000000000000000000
-000000000000000000
-000000 00000000000
-00000   0000000000
-000      000000000
-0000    0000000000
-00000  00000000000
-000000 00000000000
+Why averaging filtering will loose this image?
 
-Why averaging diltering will loose the ..?
-
-THe majority of 3x3 labels are much lower than the actual pixels themselves, and median filtering reduces the total values of the corners themselves even more.
+The majority of 3x3 labels are much lower than the actual pixels themselves, and median filtering reduces the total values of the corners themselves even more.
 
 
 ## Smoothing operator the preserves corners and edges
 
 - 25 pixels in the 5X5 neighborhood of x
 
-5x5 with X in middle []
-[ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ]
-[ ][ ][X][ ][ ]
-[ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ]
+```
+    5x5 with X in middle []
 
-Instead of taking the aberage of the 25 pixels, we group these 25 pixels into 8 groups
+    [ ][ ][ ][ ][ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ][X][ ][ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ][ ][ ][ ]
+```
+
+Instead of taking the average of the 25 pixels, we group these 25 pixels into 8 groups
 
 G1 - G8 (Regions) **X Always in the MIDDLE**
 3x3 square top left, top right, bottom left, bottom right in 5x5 matrix
@@ -163,7 +227,11 @@ G1 - G8 (Regions) **X Always in the MIDDLE**
 
 ---
 
-Steps:
+## class 3 9/1
+
+# Algorithm for Histogram
+
+**Steps:**
 1. group x's 5x5 neighborhood into 8 groups G1...G8
 2. compute 3X3 average of each group
     - result : a1,a2,....,a8 (average1,2,..)
@@ -176,41 +244,52 @@ Steps:
 
 The idea is the following: 
 
-> by selecting the gruping with the average that is closes to the X in question, we can get a closest approximation to the actual image while smoothing the area  
+`by selecting the gruping with the average that is closes to the X in question, we can get a closest approximation to the actual image while smoothing the area  `
 
 
 
 G1 preserves top left corner????? What kind of corners are preserved with G1-8?
 
 
-### Framing
+## Framing
 
-In order to perform Smoothing Operations we need to use **Framing**. Means that ewe pad the given image extra number ofrows and cols, This extra number of rows and columns depends on the size of the Kernel that we be using during Smoothing
+In order to perform Smoothing Operations we need to use **Framing**. 
+
+Pad the given image extra number ofrows and cols, This extra number of rows and columns depends on the size of the Kernel that we be using during Smoothing
 
 Zero Framing: where each framed pixel is of value zero
 - binary images
 
+```
  0 0 0 0 0
- 0 1 0 1 0 Binary Frame -> Original Binary iamge Framed without 0's
+ 0 1 0 1 0      Binary Frame -> Original Binary iamge Framed without 0's
  0 1 1 1 0
  0 1 0 1 0
- 0 0 0 0 0 
+ 0 0 0 0 0
+ ```
 
- Image is 2000X 3000 pixels
- If the neighborhood being used is 3x3
- then we add 2 rows and 2 columns to the sides of the image, and fill with 0s.
+Image is 20 X 30 pixels
 
- 4rows and 4 columsn for 5x5 
+If the neighborhood being used is `3x3`
 
-Mirror Framing: where each framed pixel has the value of its corresponding mirrored pixel
+* `add 2 rows and 2 columns` to the sides of the image, and fill with 0s.
+
+If the neighborhood being used is `5x5`
+
+* `add 4 rows and 4 columns`
+
+**Mirror Framing:** where each framed pixel has the value of its corresponding mirrored pixel
+
 - greyscale images
 
 
 
- **Mirror Framing** Corner and Edge detection: There are 9 cases here. 
+### **Mirror Framing** 
+
+Corner and Edge detection: There are 9 cases here. 
 
 here the frame starts
-
+```
  1 1 0 2 2 5 5
  1 1 0 2 2 5 5
  4 4 1 3 3 1 1
@@ -218,6 +297,7 @@ here the frame starts
  4 4 1 3 3 1 1
  9 9 4 1 1 2 2
  9 9 4 1 1 2 2
+```
 
 Computing Histogram
 

@@ -104,6 +104,8 @@ Would this work in SQL Server? **No, we use EXEC in SQL Server**
 
 # class 4
 
+# Course Overview - Building Block Approach
+
 entity, descriptions, relationships
 
 `physical data model` - specific technologies while logicai]l data model is tech agnostic
@@ -117,4 +119,45 @@ Identifying vs non identifying relationships - super class primary key is part o
 `PDM` - represents detailed technology with implementation concerns
 
 `tablename postfix id` to use as primary keys for erwin physical data model tables
+
+---
+
+
+# class 6
+
+## SDLC System development life cycle
+
+## MDLC Model development life cycle 
+
+Difference between a course and a class
+
+Think of a `course` as a superclass, and a `class` is an instantiation of the class
+
+## Objective of Normalization
+
+
+## Database Anomalies
+
+## Dependencies
+
+**take notes on non identifying relationshipts PAGE 24**
+
+---
+
+## Validations in erwinDM
+
+
+
+---
+
+## Keys
+
+identifying relationships, strong standing tables, 
+
+`Look at MongoDB NO SQL database image`
+
+
+# Identifying(Relationships to tables with foreign keys from self standing entity tables) vs Non Identifying relationships
+
+
 
