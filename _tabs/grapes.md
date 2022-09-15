@@ -55,7 +55,7 @@ Château Lassègue, "Grand Cru" 2016
 Red Bordeaux, Bordeaux, Libournais, Saint-Emilion
 Antinori, "Guado al Tasso, Il Bruciato" 2020
 Super Tuscan, Tuscany, Bolgheri
-Marqués de Cáceres, "Gran Reserva" 201 6
+, "Gran Reserva" 201 6
 Tempranillo, Rioja-
 23
 18
