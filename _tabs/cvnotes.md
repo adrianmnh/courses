@@ -231,14 +231,15 @@ G1 - G8 (Regions) **X Always in the MIDDLE**
 
 # Algorithm for Histogram
 
-**Steps:**
-1. group x's 5x5 neighborhood into 8 groups G1...G8
-2. compute 3X3 average of each group
-    - result : a1,a2,....,a8 (average1,2,..)
-3. computer absolute difference:
-    - abs(ai - X) for each ai
-        * result: d1, d2, d3, ..., d8
-4. X' <--- the ai, that has the min of (d1, d2, d3, ....,d8)
+```
+Step 1:     group x's 5x5 neighborhood into 8 groups G1...G8
+Step 2:     compute 3X3 average of each group
+            - result : a1,a2,....,a8 (average1,2,..)
+Step 3:     computer absolute difference:
+            - abs(ai - X) for each ai
+            * result: d1, d2, d3, ..., d8
+Step 4:     X' <--- the ai, that has the min of (d1, d2, d3, ....,d8)
+```
 
 **This preserves the sharpness of the image**
 
@@ -299,64 +300,74 @@ here the frame starts
  9 9 4 1 1 2 2
 ```
 
-Computing Histogram
+## Computing Histogram
 
-0. input <- given gray-scale image(input file)
-output<- open output (for histogram)
+```
 
-**
-1. numRows, col, min, man <- from input
-hist[maxVal + 1] <- dynamically allocate the hist array and init to 0
+Step 0:     input <- given gray-scale image(input file)
+            output<- open output (for histogram)
 
-2. process the input file from left -> right, top -> botton
-value <- read from input
-hist[value++]
+Step 1.     numRows, col, min, man <- from input
+            hist[maxVal + 1] <- dynamically allocate the hist array and init to 0
 
-3. repeat steap 2 ntil the file is empty
+Step 2.     process the input file from left -> right, top -> botton
+            value <- read from input
+            hist[value++]
 
-4. output <- histogram array to output file
+Step 3.     repeat steap 2 ntil the file is empty
 
-5. close input file and output file
+Step 4.     output <- histogram array to output file
 
+Step 5.     close input file and output file
+```
 
 [[image]] ---> ((threshold operation algorithm)) --> [[image]]
 
 
 ### Threshold operation algotihm steps
 
-0. image <- given greyscale image
-threshold given <-
+```
 
-1. scan/read image left -> right, top-> bottom
-pixel P(x,y) <- get the next pixel
+Step 0:     image <- given greyscale image
+            threshold given <-
 
-2. if P'(x,y).value <- 1
-else P'(x,y).value <- 0
+Step 1:     scan/read image left -> right, top-> bottom
+            pixel P(x,y) <- get the next pixel
 
-3. repeat steps 1 and 2 until all pixels are processed
+Step 2:     if P'(x,y).value <- 1
+            else P'(x,y).value <- 0
+
+Step 3:     repeat steps 1 and 2 until all pixels are processed
+```
 
 
 ## Automatic Threshold selection
 
-the 'best' value for the treshold by eyeballing the grey and pixel values
+the `best` value for the treshold by eyeballing the grey and pixel values
 
-Methhods to automatically find the perfect threshold
+Methods to automatically find the perfect threshold
 
 ### `deepest concavity` threshold selection
+
 algorithm for DC treshold selection
-0. histogram <- given bimodal histogram(must have a hedear)
-1. smooth the histogram using 1x5 **median filter**
+
+```
+Step 0:     histogram <- given bimodal histogram(must have a hedear)
+
+Step 1:     smooth the histogram using 1x5 **median filter**
+```
 
 Histogram smoothing is very important because some pixel values can be missing hence their values will be zero
 
-1x5 median filter for 1-D
-3x3 median filter for 2-D images
+`1x5 median filter for 1-D`
 
-step...
-2. x1 <- localte the 1st peak on the smoothed histogram
-3. x2 <- locate the 2nd peak on the smoothed histogram
-4. line <- determina the line between x1 and x2
+`3x3 median filter for 2-D images`
+
+```
+Step 2:     x1 <- localte the 1st peak on the smoothed histogram
+Step 3:     x2 <- locate the 2nd peak on the smoothed histogram
+Step 4:     line <- determina the line between x1 and x2
+```
 
 
-
-* `bi-means gaussian curve fitting` threshold selecton
+### `bi-means gaussian curve fitting` threshold selecton
