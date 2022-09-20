@@ -109,3 +109,23 @@ Fully Qualified tables
 <picture>
 <img src="/dm/04-01.png" alt="Data Modeling course overview key points">
 </picture>
+
+### Keys
+
+`Alternate Keys (AK)` is an attribute or set of attributes that are commonly used to access an entity, but which will result in finding exactly one instance of an entity
+
+`Inversion Entry (IE)` is an attribute or set of attributes that are commonly used to access an entity, but which **may not result** in finding exactly one instance of entity
+
+`Primary Key` defined as a **surrogate key**
+
+Non-primary business (candidate) key as an alternate key
+
+Relationship between surrogate key and businesness key is a *bi-directional unique mapping*(**only on a Logical Model**)
+
+`Logical Key Group` defining the business (candidate) key
+
+`Physical Index` defining the business (candidate) key
+
+### Identifying Relationship
+
+Traditional way of creating a physical bridge(association) **weak** table which are dependent upon the parents through an **identifying relationship** (at least 2 parents tables)
