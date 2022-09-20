@@ -668,10 +668,10 @@ $sidebar-display: "sidebar-display";
   #avatar {
     > a {
       display: block;
-      width: 6rem;
-      height: 6rem;
+      width: 9rem;
+      height: 9rem;
       border-radius: 50%;
-      border: 2px solid rgba(222, 222, 222, 0.7);
+      border: 2px solid #e4f3e9;
       overflow: hidden;
       transform: translateZ(0); /* fixed the zoom in Safari */
       -webkit-transition: border-color 0.35s ease-in-out;
@@ -706,7 +706,7 @@ $sidebar-display: "sidebar-display";
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
-      color: rgba(134, 133, 133, 99%);
+      color: #e4f3e9;
     }
   }
 
@@ -1220,8 +1220,8 @@ $sidebar-display: "sidebar-display";
   }
 
   #avatar > a {
-    width: 5rem;
-    height: 5rem;
+    width: 115rem;
+    height: 115rem;
   }
 
   .site-subtitle {
@@ -1578,8 +1578,8 @@ $sidebar-display: "sidebar-display";
         @extend %profile-ml;
 
         > a {
-          width: 6.2rem;
-          height: 6.2rem;
+          width: 15rem;
+          height: 15rem;
 
           &.mx-auto {
             margin-left: 0 !important;
