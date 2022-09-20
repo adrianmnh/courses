@@ -161,3 +161,22 @@ identifying relationships, strong standing tables,
 
 
 
+# class 7
+
+
+## Notes
+
+**Identifying Relationship** - a portion of Child Table Primary Key is a Foreign Key 
+
+**Non Identifying Relationship** - A Table contains some identifying key, that can be used to identify an outside entity, this key however, **is not** part of the primary key
+
+```
+Vehicle ID (PK)
+---------------
+Make
+Year
+....
+Manufacturer ID ()
+
+```
+
