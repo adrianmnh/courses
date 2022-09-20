@@ -365,19 +365,146 @@ algorithm for DC treshold selection
 Step 0:     histogram <- given bimodal histogram(must have a hedear)
 
 Step 1:     smooth the histogram using 1x5 **median filter**
-```
 
-Histogram smoothing is very important because some pixel values can be missing hence their values will be zero
+Step 2:     x1 <- localte the 1st peak on the smoothed histogram
+
+Step 3:     x2 <- locate the 2nd peak on the smoothed histogram
+
+Step 4:     line <- determina the line between x1 and x2
+```
+>why to **smooth Histogram?** 
+
+The pixel shading range can be large enough that some shades may have a very small amount of pixels or none.
+
+"This helps to visualize data, and it also serves as a lossy data compression, since it allows replacing a large point set with a compact approximation of the underlying distribution" - Analysis of Uncertain Data
 
 `1x5 median filter for 1-D`
 
 `3x3 median filter for 2-D images`
 
-```
-Step 2:     x1 <- localte the 1st peak on the smoothed histogram
-Step 3:     x2 <- locate the 2nd peak on the smoothed histogram
-Step 4:     line <- determina the line between x1 and x2
-```
-
-
 ### `bi-means gaussian curve fitting` threshold selecton
+
+incomplete
+
+---
+
+
+# Computer Vision class 7
+September 15
+
+## Run Length Encoding Part II
+
+Run-length encoding method 1 is used for Fax Machines
+
+Run-Length encoding method 1 Algorithm
+
+```
+Step 0:     inFile <- open input image file
+            numRows, numCols, minVal, maxVal <- inFile
+            row <- 0
+            length <0 0
+            
+Step 1:     col <- 0
+            length <- 0
+            currVal <- inFile
+            
+Step 2:     output <- row, col, currVal
+            length++
+            
+Step 3:     col++
+            
+Step 4:     nextVal <- infile
+            
+Step 5:     if nextVal == currVal
+                length++
+            else
+                output <- length
+                length <- 1
+                currVal <- nextVal
+                output <- row, col, currVal
+                
+Step 6:     repeat steap 3 to step 5 until END OF TEXT LINE
+            
+Step 7:     row++
+            
+Step 8:     repeat Step 1 to step 7 until end of file
+            
+Step 9:     close all files
+```
+
+> Quiz example
+
+Exam :
+* Deepest Concavity
+
+Why is framing necesssary? 
+
+It helps reducing the amount of computation by reducing the amount of cases we test for. Corners(4), Edge pixel(4), nont edge or corner(1 case)
+
+> Counting Algorithm
+
+### Connected Neighbor
+> Connected neighbor
+
+> connected component algorithm Image 
+- A simple grouping(clustering) algorithm
+- Works on binary images
+- Assign unique labels to connected sets of objects pixels
+- Compute a list of attributes for each component
+
+```
+                                           0  0 0 0 0 0 0 0 0 0  0 
+ 
+        110011110                          0  1 1 0 0 1 1 1 1 0  0
+        011011000                          0  0 1 1 0 1 1 0 0 0  0
+        001111001    -> zero frame  ->     0  0 0 1 1 1 1 0 0 1  0
+        110000101                          0  1 1 0 0 0 0 1 0 1  0
+        001111100                          0  0 0 1 1 1 1 1 0 0  0
+ 
+                                           0  0 0 0 0 0 0 0 0 0  0
+``` 
+
+```
+image <- giv en the BInary image
+newLabel <- 0 (background is 0)
+eqTable <- Equivalency Table
+
+scan the image Left -> Right and Top->Bottom
+P(i,j) <- next pixel
+
+if P(i,j) > 0
+    look at: a,b,c,d
+
+    4 connectedness
+
+         
+             a  
+
+      b    (i,j)    C
+
+             d  
+    
+    8-connectedness 
+
+      a     b     c
+  
+      d  P(i,j)   e
+      
+      f     g     h 
+
+Which connectedness should you apply? meaning 4 or 8 conntectedness?
+
+case 1: a =b =c =d =0
+        newLabel++
+        P(i,j) <- newLabel
+
+case 2: some/all of a,b,c,d alread have the same label 
+        P(i,j) <- same label
+
+case 3: some/all of a,b,c,d already have labels but their label are NOT the same(excluding 0)
+        P(i,j) <- minLabel = min(a,b,c,d)
+
+
+```
+
+> cases
