@@ -15,3 +15,13 @@ image:
 ---
 
 varchar in SQLServer
+
+
+free 24GB oracle!!
+
+```
+file path for docker volumes
+
+\\wsl.localhost\docker-desktop-data\data\docker\volumes
+
+```
