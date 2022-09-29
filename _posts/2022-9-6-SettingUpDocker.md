@@ -1,10 +1,10 @@
 ---
-title: CSCI 381 - Data Modeling and Advanced Systems 2
+title: Setting up Docker Containers for SQL
 author: adrian
-date: 2022-9-6 09:02:00 -400
-categories: [Databases]
-tags: [docker]
-pin: false
+date: 2022-9-22 09:02:00 -400
+categories: [Databases, Containers]
+tags: [docker, MySQL, SQLServer, PostgreSQL]
+pin: true
 math: true
 mermaid: true
 image:
@@ -14,28 +14,11 @@ image:
   alt: 
 ---
 
-varchar in SQLServer
-
-
-free 24GB oracle!!
-
-```
-file path for docker volumes
-
-\\wsl.localhost\docker-desktop-data\data\docker\volumes
-
-```
-
 
 
 # MSSQL
 
 ```sql
-my image -> 
-
-docker container run --name testtest -p 20005:1433 -e "ACCEPT_EULA=Y" -e "MSSQL_AGENT_ENABLED=true" -e "SA_PASSWORD=legion$%^" -e "MSSQL_DATA_DIR=/var/opt/mssql/data/" -e "MSSQL_LOG_DIR=/var/opt/mssql/log/" -e "MSSQL_BACKUP_DIR=/var/opt/mssql/backup/" -v //zvol/test:/var/opt/mssql/backup -h microsoftSQLServer -d adriannoa91/sampledb:sqlserver
-
-
 docker pull mcr.microsoft.com/mssql/server:2019-latest
 
 docker container run --name MSSQLServer -p 20003:1433 -e "ACCEPT_EULA=Y" -e "MSSQL_AGENT_ENABLED=true" -e "SA_PASSWORD=legion$%^" -e "MSSQL_DATA_DIR=/var/opt/mssql/data/" -e "MSSQL_LOG_DIR=/var/opt/mssql/log/" -e "MSSQL_BACKUP_DIR=/var/opt/mssql/backup/" -v //zvol/sqlserver:/var/opt/mssql/backup -h microsoftSQLServer -d mcr.microsoft.com/mssql/server:2019-latest
@@ -72,9 +55,10 @@ WHERE
   TABLE_TYPE = 'BASE TABLE';
 GO
 
-
-
 CREATE DATABASE TestDB ON (FILENAME = 'C:\MySQLServer\TestDB_Data.mdf'), (FILENAME = 'C:\MySQLServer\ TestDB_Log.ldf') FOR ATTACH; 
+
+
+my image -> docker container run --name testtest -p 20005:1433 -e "ACCEPT_EULA=Y" -e "MSSQL_AGENT_ENABLED=true" -e "SA_PASSWORD=legion$%^" -e "MSSQL_DATA_DIR=/var/opt/mssql/data/" -e "MSSQL_LOG_DIR=/var/opt/mssql/log/" -e "MSSQL_BACKUP_DIR=/var/opt/mssql/backup/" -v //zvol/test:/var/opt/mssql/backup -h microsoftSQLServer -d adriannoa91/sampledb:sqlserver
 ```
 
 # PostgreSQL
@@ -136,3 +120,16 @@ mysql -uroot -p sakila < /var/lib/mysql-files/sakila-data.sql
 
 
 
+
+
+varchar in SQLServer
+
+
+free 24GB oracle!!
+
+```
+file path for docker volumes in linux wsl
+
+\\wsl.localhost\docker-desktop-data\data\docker\volumes
+
+```
