@@ -237,7 +237,8 @@ G1 - G8 (Regions) **X Always in the MIDDLE**
 
 ---
 
-## class 3 9/1
+# class 3 
+September 1
 
 # Algorithm for Histogram
 
@@ -366,11 +367,11 @@ Step 0:     histogram <- given bimodal histogram(must have a hedear)
 
 Step 1:     smooth the histogram using 1x5 **median filter**
 
-Step 2:     x1 <- localte the 1st peak on the smoothed histogram
+Step 2:     x1 <- locate the 1st peak on the smoothed histogram
 
 Step 3:     x2 <- locate the 2nd peak on the smoothed histogram
 
-Step 4:     line <- determina the line between x1 and x2
+Step 4:     line <- determine the line between x1 and x2
 ```
 >why to **smooth Histogram?** 
 
@@ -387,6 +388,14 @@ The pixel shading range can be large enough that some shades may have a very sma
 incomplete
 
 ---
+
+# Computer Vision class 4
+September 6
+
+Gaussian Curve
+
+
+
 
 
 # Computer Vision class 7
@@ -453,15 +462,15 @@ It helps reducing the amount of computation by reducing the amount of cases we t
 - Compute a list of attributes for each component
 
 ```
-                                           0  0 0 0 0 0 0 0 0 0  0 
+                                                   0  0 0 0 0 0 0 0 0 0  0 
  
-        110011110                          0  1 1 0 0 1 1 1 1 0  0
-        011011000                          0  0 1 1 0 1 1 0 0 0  0
-        001111001    -> zero frame  ->     0  0 0 1 1 1 1 0 0 1  0
-        110000101                          0  1 1 0 0 0 0 1 0 1  0
-        001111100                          0  0 0 1 1 1 1 1 0 0  0
+        1 1 0 0 1 1 1 1 0                          0  1 1 0 0 1 1 1 1 0  0
+        0 1 1 0 1 1 0 0 0                          0  0 1 1 0 1 1 0 0 0  0
+        0 0 1 1 1 1 0 0 1    -> zero frame  ->     0  0 0 1 1 1 1 0 0 1  0
+        1 1 0 0 0 0 1 0 1                          0  1 1 0 0 0 0 1 0 1  0
+        0 0 1 1 1 1 1 0 0                          0  0 0 1 1 1 1 1 0 0  0
  
-                                           0  0 0 0 0 0 0 0 0 0  0
+                                                   0  0 0 0 0 0 0 0 0 0  0
 ``` 
 
 ```
@@ -497,14 +506,17 @@ Which connectedness should you apply? meaning 4 or 8 conntectedness?
 case 1: a =b =c =d =0
         newLabel++
         P(i,j) <- newLabel
+        update EQ table[newlabel]=newLabel
 
 case 2: some/all of a,b,c,d alread have the same label 
-        P(i,j) <- same label
+        P(i,j) <- same label or
+        p(i,j) <- the non zero label (min)
 
 case 3: some/all of a,b,c,d already have labels but their label are NOT the same(excluding 0)
         P(i,j) <- minLabel = min(a,b,c,d)
+        update EQ table[a,b,c,d]=newLabel
 
 
 ```
 
-> cases
+>- cases

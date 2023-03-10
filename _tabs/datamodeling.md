@@ -171,12 +171,95 @@ identifying relationships, strong standing tables,
 **Non Identifying Relationship** - A Table contains some identifying key, that can be used to identify an outside entity, this key however, **is not** part of the primary key
 
 ```
-Vehicle ID (PK)
----------------
-Make
-Year
-....
-Manufacturer ID ()
+Table: Vehicle
 
+   Vehicle ID (PK)
+ ---------------------
+| Make                |
+| Year                | - - - - - - - - - > 
+| ManufacturerID (FK) |
+| VinNumber (FK)      |
+ ---------------------
+
+ Both ManufacturerID and VinNumber are foreign keys
 ```
+
+<img src="/break.png">
+
+# class 8
+
+
+
+# makeupclass 1
+
+## Entity Data Sleuthing
+
+# make up class 2
+
+Attributes Data Sleuthing
+
+Entity
+
+plural entities:
+1. being, existence
+2. the existence of a thing is contrasted with its attributes
+
+
+varchar ansci standrad, takes 2bytes ber char
+varchar(1) ~ 3 bytes
+
+structure ready to be populated -> forward engineering
+
+
+# class 8
+
+SQL SERVER -
+* DML - Data M Language
+* DDL - Data Definition Language
+
+Domains - User Defined Data Types
+
+What ANSI standrad Object describes the Black box?
+
+what's ANSI SQL? A standard for the language, inheritable
+
+BlackBox is a fully quailified domain
+
+Aliasing SQL DAtatypes simulates a unique, strongly typed class name
+
+MySQL does not support the concept of ownership(Schemas) and domains
+
+The domain is the `core foundation` of designing the database
+
+The domain 
+* provides for total reuse by encapsulating applocation attributes within an ontology
+* is a base reusable object that should be solely used to define attributes
+* is strongly typed by a unique association with a SQL Datatype
+
+<img src="/dm/08-01.png">
+
+# makeup class 3
+
+
+# class 10
+
+every column has a user defined data type
+
+Udt.[DomainName]
+
+SQL server
+
+```sql
+SELECT FullyQualifiedTableName, SchemaName, TableName, ColumnName, OrdinalPosotion
+FROM Utils.uvw_FindColumnDefinitionPlusDefaultAndCheckConstraint AS u
+WHERE (DataType = 'nvarchat(15)')
+WHERE (DomainName = 'Country')
+ORDER BY Column Name
+```
+
+Data Standard can be imported using complete compare.
+
+The target is the right Model, we can import from the Left.
+
+Naming Standards can be used to abbreviate entities
 
