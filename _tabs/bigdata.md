@@ -61,24 +61,24 @@ At every point $i$, $X_j$ is in the set $A_i$ with $Prob=S/i$
    * $Pr(X_{k+1} \text{ is an element of the set }A_{k+1})=S/K+1$
 
 2. `probability that some element is in the new set, given that it wasn't in the previous iteration`
-    * $Pr(X_j \text{ is an element of the set } A_{k+1} | X_j \text{ is not in }A_k)=0$
+    * $Pr(X_j \text{ is an element of the set } A_{k+1}\| X_j\text{ is not in }A_k)=0$
 
 3. `probability that some element is in the new and the previous one is EQUAL TO (1 - probability that element is in previous but not in the new set)`
-   * $Pr(X_j \isin A_{k+1} | X_j \isin A_k) = 1 - Pr(X_j \notin A_{k+1} | X_j \isin A_k)$`
+   * $Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1 - Pr(X_j \notin A_{k+1} \| X_j \in A_k)$`
 
 4. `Pr(some element is in the new set) = Pr(element is in new set|element is in previous set).Pr(element is in previous set) + Pr(element is in new set|element is not in previous set).Pr(element is not in previous set)`
-   * $Pr(A) = Pr(A|B) Pr(B) + Pr(A|B^c).Pr(B^c)$
+   * $Pr(A) = Pr(A\|B) Pr(B) + Pr(A\|B^c).Pr(B^c)$
 
 So, $\text{Pr(element is new set|element is not in previous set) = 0}$
 
-Then, $Pr(X_j \isin A_{k+1} ) = Pr(X_j \isin A_{k+1}|X_j \isin A_k).Pr(X_j \isin A_k) + 0*Pr(X_j \notin A_k)$
+Then, $Pr(X_j \in A_{k+1} ) = Pr(X_j \in A_{k+1}\|X_j \in A_k).Pr(X_j \in A_k) + 0*Pr(X_j \notin A_k)$
 
 
-$Pr(X_j \isin A_{k+1} | X_j \isin A_k) = 1 - Pr(X_j \notin A_{k+1} | X_j \isin A_k)$
+$Pr(X_j\in A_{k+1}\| X_j \in A_k) = 1-Pr(X_j \notin A_{k+1}\|X_j\in A_k)$
 
 $\text{Pr(element is not in new set given that it is in the previous set)=Pr(element got booted in the current iteration }\times \text{which element got booted)} = S/(k+1) \times 1/S$
 
-$Pr(X_j \isin A_{k+1} | X_j \isin A_k) = 1-S/(k+1) \times 1/S = k/(k+1)$
+$Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1-S/(k+1) \times 1/S = k/(k+1)$
 
-Finally, $Pr(X_j \isin A_{k+1} ) = k/(k+1) \times S/k + 0 = S/(k+1)$
+Finally, $Pr(X_j \in A_{k+1} ) = k/(k+1) \times S/k + 0 = S/(k+1)$
 
