@@ -5,6 +5,42 @@ order: 7
 math: true
 ---
 
+# `Probability Review`
+
+## `Bernouli Distribution`
+
+Denotes an event that takes on 2 possible values, $success(p)$ or $failure(q)$
+
+$P(X=1)=p \text{ \ \ \ \ and\  \ \ \ } P(X=0)=1-p=q$
+
+$E(X)=p \text{\ \ \ and\ \ \ }Var(X)=pq$
+
+## `Binomial Distribution`
+
+Denotes the probability that a number of success or failed events take place(Bernoulis)
+
+Satisfies:
+1. Binary outcome(Bernouli)
+2. Independent
+3. $n \text{ \# of trials}$
+4. Same probability of success or failure per trial
+
+$P(X=k) = {n \choose k}p^kq^{n-k} \text{ where k}\in\{0,1,2,..,n\}$
+
+$E(X)=np \ \ \ \ and\ \ \ Var(X)=npq$
+
+## `Geometric Distribution`
+
+Used to find the probability of getting $1^{st}$ success or failure on trial $X$
+
+Using the same conditions as Binomial Distribution
+
+$P(X=k) = q^{k-1}p$
+
+$E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
+
+
+
 # `Streaming Model`
 
 Used when:
