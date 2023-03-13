@@ -45,6 +45,9 @@ $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 * $log(n) \rightarrow base\ 10$
 * $ln(n) \rightarrow base \ e$
 
+* $\text{Indicator Random Variable: Expected value of }I_A \text{ is equal to prob\% of event A ocurring}$
+  * $E(I_A) = P(A)$
+
 ![](\linebreak-fire.png)
 
 
@@ -90,9 +93,40 @@ Query Cost     | $O(n)\ ...\ O(1/m)$
 
 Let $Q$ be query time for hashing w/ chain struct $1\le Q\le n$
 
-`theorem:` assuming $h$ is uniform
+`theorem:` assuming $h$ is uniform, the **expected value or mean:**
 
 $E(Q)=O(n/m)$
+
+`proof:` query time for any item $x_i$ is **dependent** on the # of distinct elements $x_j(j\ne i)$ that hash to the same bucket $:[m]$
+
+This counts the number of collisions by setting probability to 1 if any to different elements map to the same bucket $[m]$, 0 otherwise
+
+Using Indicator r.v., the fact that $\text{Pr(of element hashing to some bucket) = 1/m}$ and that $E(I_A)=Pr(A)$
+
+$$Q(x) = \begin{cases}
+\ 1,\ h(x_i)=h(x_j), i \ne j
+\\
+\ 0,\ otherwise
+\end{cases}$$
+
+$$\text{query time }Q = \sum_{i=1}^n E(X_i)= E(\sum_{i=1}^n X_i) = E(\sum_{i=1}^n \frac{1}{m}) = \frac{n}{m}
+\\ 
+\text{in expectation, }
+\\
+ Q = \large O(n/m)$$
+
+ `disclaimer:` how well a simple uniform hash performs depends on how close $m$ is to $S$. If $S \gg m$ then the linked lists will be too large to search 
+
+ 1. If $m=O(n)$, then $E(Q)=O(1)$
+ 2. Hashing w/ chaining provides $O(1)$ **expected Query Time** $\iff$ the # of elements in $S$ is proportional to the # of slots $[m]$
+ 3. often more items that slots available → `Not the best structure`
+
+ $\phi\ chaining$ | Cost
+:-:|:-:
+Space Cost     | $O(n)$
+Pre-Processing | $O(n)$
+Query Cost     | $O(1) \text{ iff proportional } S\ to\ [m]$
+
 
 ![](\linebreak-fire.png)
 
