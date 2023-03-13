@@ -45,9 +45,17 @@ $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 * $log(n) \rightarrow base\ 10$
 * $ln(n) \rightarrow base \ e$
 
-* $\text{Indicator Random Variable: Expected value of }I_A \text{ is equal to prob\% of event A ocurring}$
-  * $E(I_A) = P(A)$
+* If $I_A=1\ when\ x\ge t, \ then\ Pr(I=1)=Pr(x\ge t)$
+* $\text{Indicator Random Variable: ExpectedValue(}I_A \text{) is equal to prob of event A ocurring}$
+  * $E(I_A) = P(A) = p$
+* Variance and Deviation $\mu$
+  * $Var(X) = \mu^2$
+  * $\mu = \sqrt{Var(X)}$
+ 
 
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
 ![](\linebreak-fire.png)
 
 
@@ -128,10 +136,79 @@ Pre-Processing | $O(n)$
 Query Cost     | $O(1) \text{ iff proportional } S\ to\ [m]$
 
 
+<!----------------------------------------------------------------------------------------------------------------------------->
 ![](\linebreak-fire.png)
 
 
+# **Tail Bounds**
 
+What is the probability our result will deviate from the expectation? aka `bad event` 
+
+## **Markov's Inequality**
+
+Let $X$ be a r.v. over sample space $\Omega$ then $\forall_t \in R, t>0$
+
+* What is the probability the **actual value** is beyond **expected value** by a factor of $t$
+$$\large Pr(X\ge t.E(X)) \leq \frac{1}{t} \\ \equiv \\ Pr(X \ge t)\leq \frac{E(X)}{t}$$
+
+`disclaimer:` Markov's Inequality is often too weak to yield any useful results. 
+
+1. Fundamental tool in developing more sophisticated bounds. 
+   * Use tail bounds to control $[m]$(size of table) to get a $O(1)$ query time (in expectation).
+2. Techniques for bounding tail distribution are the major tool for estimating 
+   * $Prob(failure)$ of algorithms, and
+   * $High\ probability\ bounds$ on their run-time
+
+`proof:` for $t > 0$, let $I_A = \begin{cases}
+\ 1,\ if X\ge t
+\\
+\ 0,\ o.w.
+\end{cases}$  , note that $X\ge 0$ 
+
+$\text{first: Prove that } \ I_A\le X/t$
+
+We have two possible outcomes: 
+1. $I_A = 1$ if the event $X\ge t$ occurs, and
+2. $I_A = 0$ if $X < t$. note that $t>0$
+
+$t.I_A \le X \rArr t.1 \le X$ if event occurs  and $t.I_A \le X \rArr t.0 \le X$ if event does not occur
+
+1. $t\le X$ is **true**
+2. $0\le X$ also **true**
+
+therefore, $t.I_A \le X \ \ \rArr \ \ \large I_A\le\frac{X}{t}$ 
+
+$\text{second: } \ I_A=[0,1], E(I_A) = Pr(I_A=1) = Pr(X\ge t)$
+
+Taking expectations:
+
+$Pr(X\ge t) = E[I_A] \text{ by linearity of expectations}$ 
+
+$E[I_A] \le E[X/t]$
+
+$E[X/t] =  \frac{\large E[X]}{\large t}$
+
+$\text{finally: } Pr(X\ge t) \le \frac{\large E[X]}{\large t}$
+
+
+
+## ChebyShev's Inequality
+
+Let $X$ be a r.v. over sample space $\Omega$ then $for \ \forall\ t >0$
+
+
+$$\large Pr(\ \|X-E(X)\| \ge t\ )\le \frac{Var[X]}{t}$$
+
+
+`disclaimer:` Significantly stronger tail bound using expectaion and variance of a r.v.
+
+
+
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+![](\linebreak-fire.png)
 
 # Streaming Model
 
@@ -210,3 +287,6 @@ $Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1-S/(k+1) \times 1/S = k/(k+1)$
 
 Finally, $Pr(X_j \in A_{k+1} ) = k/(k+1) \times S/k + 0 = S/(k+1)$
 
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+![](\linebreak-fire.png)
