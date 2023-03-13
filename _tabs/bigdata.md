@@ -7,15 +7,15 @@ math: true
 
 # Probability Review
 
-## `Bernouli Distribution`
+## Bernouli Distribution
 
 Denotes an event that takes on 2 possible values, $success(p)$ or $failure(q)$
 
-$P(X=1)=p \text{ \ \ \ \ and\  \ \ \ } P(X=0)=1-p=q$
+$P(X=1)=p  \ \ \ \ and\  \ \ \  P(X=0)=1-p=q$
 
-$E(X)=p \text{\ \ \ and\ \ \ }Var(X)=pq$
+$E(X)=p \ \ \ and\ \ \ Var(X)=pq$
 
-## `Binomial Distribution`
+## Binomial Distribution
 
 Denotes the probability that a number of success or failed events take place(Bernoulis)
 
@@ -29,7 +29,7 @@ $P(X=k) = {n \choose k}p^kq^{n-k} \text{ where k}\in\{0,1,2,..,n\}$
 
 $E(X)=np \ \ \ \ and\ \ \ Var(X)=npq$
 
-## `Geometric Distribution`
+## Geometric Distribution
 
 Used to find the probability of getting $1^{st}$ success or failure on trial $X$
 
@@ -39,11 +39,60 @@ $P(X=k) = q^{k-1}p$
 
 $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 
+### `notes:`
+
+* $lg(n) \rightarrow base\ 2$
+* $log(n) \rightarrow base\ 10$
+* $ln(n) \rightarrow base \ e$
 
 ![](\linebreak-fire.png)
 
 
 # Membership(Dictionary Problem)
+
+We want to construct an **algo/data structure** that stores elements in $S$ to answer membership queries
+
+`binary search trees(BSTs)`
+* Includes AVL, Red-Black, Splay trees
+
+$\phi\ BST$ | Cost
+:-:|:-:
+Space Cost     | $O(n\ elements \times log(n) \ bits) \approx O(n)$
+Pre-Processing | $O(n)\rightarrow \text{ proportional to \# of added elements}$
+Query Cost     | $lg(n)$
+
+Can **querying cost** be reduced?
+
+`Hash Functions/tables/maps/compression functions`
+
+$h[u]\rightarrow[m]\text{ such that u is strictly larger than m } u \gg m$
+
+$m$ is the number of buckets or slots available in array or table $T$, used to store hashed elements with $h$
+
+Collitions arrise because $u \gg m$ so by Pigeon Hole Principle, at least 2 objects in $[u]$ map to at least 1 object in $[m]$
+
+Hashing with chaining is used to handle collisions, pointers to linked lists on each bucket $m$ (usually inserted in the front to reduce cost) 
+
+Query time is proportional to the length of linked list of bucket $m$ in which object $x$ maps to using hash function $h$
+1. worst case: every element in $S$ maps to 1 bucket $[u]\rightarrow\ c$
+2. best case: `simple hash function:` every element $i \in [u]$ is mapped uniformly at random, $h:[u]\rightarrow [m]$ 
+   * $Pr(h(i)=j)=1/m$ 
+
+$\phi\ hash$ | Cost
+:-:|:-:
+Space Cost     | $O(n)$
+Pre-Processing | $O(n)$
+Query Cost     | $O(n)\ ...\ O(1/m)$
+
+## Simple Uniform Hash Function
+
+`Query Time Analysis and Proof`
+
+Let $Q$ be query time for hashing w/ chain struct $1\le Q\le n$
+
+`theorem:` assuming $h$ is uniform
+
+$E(Q)=O(n/m)$
 
 ![](\linebreak-fire.png)
 
@@ -111,7 +160,7 @@ At every point $i$, $X_j$ is in the set $A_i$ with $Prob=S/i$
 3. `probability that some element is in the new and the previous one is EQUAL TO (1 - probability that element is in previous but not in the new set)`
    * $Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1 - Pr(X_j \notin A_{k+1} \| X_j \in A_k)$`
 
-4. `Pr(some element is in the new set) = Pr(element is in new set|element is in previous set).Pr(element is in previous set) + Pr(element is in new set|element is not in previous set).Pr(element is not in previous set)`
+4. `Pr(some element is in the new set) = Pr(element is in new set\|element is in previous set).Pr(element is in previous set) + Pr(element is in new set\|element is not in previous set).Pr(element is not in previous set)`
    * $Pr(A) = Pr(A\|B) Pr(B) + Pr(A\|B^c).Pr(B^c)$
 
 So, $\text{Pr(element is new set|element is not in previous set) = 0}$
