@@ -5,7 +5,7 @@ order: 7
 math: true
 ---
 
-# `Probability Review`
+# Probability Review
 
 ## `Bernouli Distribution`
 
@@ -43,14 +43,14 @@ $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 ![](\linebreak-fire.png)
 
 
-# `Membership(Dictionary Problem)`
+# Membership(Dictionary Problem)
 
 ![](\linebreak-fire.png)
 
 
 
 
-# `Streaming Model`
+# Streaming Model
 
 Used when:
 
