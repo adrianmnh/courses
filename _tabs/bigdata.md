@@ -40,6 +40,15 @@ $P(X=k) = q^{k-1}p$
 $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 
 
+![](\linebreak-fire.png)
+
+
+# `Membership(Dictionary Problem)`
+
+![](\linebreak-fire.png)
+
+
+
 
 # `Streaming Model`
 
