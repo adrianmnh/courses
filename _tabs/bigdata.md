@@ -45,12 +45,18 @@ $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 * $log(n) \rightarrow base\ 10$
 * $ln(n) \rightarrow base \ e$
 
-* If $I_A=1\ when\ x\ge t, \ then\ Pr(I=1)=Pr(x\ge t)$
+* If $\large I_A=1\ when\ x\ge t, \ then\ Pr(I=1)=Pr(x\ge t)$
 * $\text{Indicator Random Variable: ExpectedValue(}I_A \text{) is equal to prob of event A ocurring}$
-  * $E(I_A) = P(A) = p$
+  * $\large E(I_A) = P(A) = p$
 * Variance and Deviation $\mu$
+  * $\sqrt{Var(X)} = \mu$
   * $Var(X) = \mu^2$
-  * $\mu = \sqrt{Var(X)}$
+  * $\large Var(X) = E[(X-E[X])^2]$
+  * $\large Var(X) = E[X^2] - E[X]^2$
+
+* Tail bounds
+  * Markov's - $Pr(X \ge t)\leq \Large \frac{E(X)}{t}$
+  * ChebyShev's -  $Pr(\ \left|X-E(X)\right| \ge t\ )\le \Large \frac{Var[X]}{t^2}$
  
 
 
@@ -95,7 +101,7 @@ Space Cost     | $O(n)$
 Pre-Processing | $O(n)$
 Query Cost     | $O(n)\ ...\ O(1/m)$
 
-## Simple Uniform Hash Function
+## Simple **Uniform** Hash Function
 
 `Query Time Analysis and Proof`
 
@@ -109,7 +115,7 @@ $E(Q)=O(n/m)$
 
 This counts the number of collisions by setting probability to 1 if any to different elements map to the same bucket $[m]$, 0 otherwise
 
-Using Indicator r.v., the fact that $\text{Pr(of element hashing to some bucket) = 1/m}$ and that $E(I_A)=Pr(A)$
+Using Indicator r.v., the fact that $\text{Pr(of element hashing to some bucket)} = \LARGE \frac{1}{m}$ and that $E(I_A)=Pr(A)$
 
 $$Q(x) = \begin{cases}
 \ 1,\ h(x_i)=h(x_j), i \ne j
@@ -117,23 +123,28 @@ $$Q(x) = \begin{cases}
 \ 0,\ otherwise
 \end{cases}$$
 
-$$\text{query time }Q = \sum_{i=1}^n E(X_i)= E(\sum_{i=1}^n X_i) = E(\sum_{i=1}^n \frac{1}{m}) = \frac{n}{m}
+$$\text{query time } Q = \sum_{i=1}^n E(X_i)= E\left(\sum_{i=1}^n X_i\right) = E\left(\sum_{i=1}^n \frac{1}{m}\right) = \frac{n}{m}
 \\ 
 \text{in expectation, }
 \\
- Q = \large O(n/m)$$
+ Q = \large O\left(\frac{n}{m}\right)$$
 
  `disclaimer:` how well a simple uniform hash performs depends on how close $m$ is to $S$. If $S \gg m$ then the linked lists will be too large to search 
 
  1. If $m=O(n)$, then $E(Q)=O(1)$
  2. Hashing w/ chaining provides $O(1)$ **expected Query Time** $\iff$ the # of elements in $S$ is proportional to the # of slots $[m]$
  3. often more items that slots available → `Not the best structure`
+ 4. $P(Q_X)$ = Probability that $h$ uniformly hashes to bucket $[m]$
 
  $\phi\ chaining$ | Cost
 :-:|:-:
 Space Cost     | $O(n)$
 Pre-Processing | $O(n)$
 Query Cost     | $O(1) \text{ iff proportional } S\ to\ [m]$
+Query Time:    | $P(Q_X) = \Large \frac{1}{m}$
+Expectation:   | $E(Q_X) = \Large\left(\frac{n}{m}\right)$
+
+
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -192,17 +203,85 @@ $\text{finally: } Pr(X\ge t) \le \frac{\large E[X]}{\large t}$
 
 
 
-## ChebyShev's Inequality
+## **ChebyShev's Inequality**
 
 Let $X$ be a r.v. over sample space $\Omega$ then $for \ \forall\ t >0$
 
 
-$$\large Pr(\ \|X-E(X)\| \ge t\ )\le \frac{Var[X]}{t}$$
+$$\large Pr(\ \left|X-E(X)\right| \ge t\ )\le \frac{Var[X]}{t^2}$$
 
 
-`disclaimer:` Significantly stronger tail bound using expectaion and variance of a r.v.
+`disclaimer:` Significantly **stronger tailbound** using expectaion and variance of a r.v.
+
+`proof:` 
+
+$\text{first: } \ Pr(\ \left|X-E(X)\right| \ge t\ ) = Pr(\ [X-E(X)]^2 \ge t^2\ )$ 
+
+Since $[X-E(X)]^2$ is a non-negative r.v., apply Markov's
+
+$\text{second: } \ Pr([X-E(X)]^2 \ge t^2) = E([X-E(X)]^2)/t^2$
+
+$\text{next: } \  E([X-E(X)]^2)/t^2 = Var(X)/ t^2$
 
 
+$\large \text{finally: } \ Pr([X-E(X)]^2 \ge t^2) = Pr(\ \left|X-E(X)\right| \ge t\ ) = \frac{\large Var[X]}{\Large t^2}$
+
+
+
+`Using Chebyshev to bound Query Time:`
+
+$$\large P(\left|Q_x - E(Q_x)\right| > t) \le \frac{\large n(\LARGE \frac{1}{m})(\large 1-\LARGE \frac{1}{m})}{t^2}  \large < \frac{E(X)}{t}$$
+
+$\large n(1/m)(1 - 1/m) = np(1-p) = npq$
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+![](\linebreak-fire.png)
+
+
+# **Universal Hash Function**
+
+Let $U$ be a universe of keys and $H$ be a finite collection of hash functions $h:[u]\rarr[m]$
+
+$H$ is `universal` if
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+![](\linebreak-fire.png)
+
+## **Chernoff Bound**
+
+Let $X_1, X_2, ..., X_n$ be a Bernouli R.V. set $Pr\{X_i=1\}=P_i$, and can be written as $\large X = \sum_{i=1}^n X_i$ and $\delta \in R$, then:
+
+1. $\text{If } 0\le \delta < 1,\large Pr\{X > (1 +\delta)(E[X])\} \le \large{e}\Large^{\frac{1}{3}\delta^2E(X) } \normalsize = \Large \frac {\large 1}{\Large e^{\Large \frac{1}{3}\large\delta^2E(X)}}$ 
+   * if $\large c$ `is large`, then  $\frac{1}{\large e^{\normalsize c}}$`is very small`
+
+2. $\forall\ \delta > 0, \large Pr\{X\ge (1+\delta)(E[X])\}\le \large \left( \frac{\large e^{\normalsize \delta}}{\large (1+\delta)^{\normalsize 1+\delta}}  \right)^{\normalsize E(X)}$
+   * $Pr\{x\ge (1+\delta)(E[X])\}$ `is a bad event`
+
+`We want to know:` $Pr(Y\ge B):$
+
+Define $X_i = \begin{cases} 1, \ if\ i^{th }\text{ key maps to the block } \rArr\ Y = \large \sum_{i=1}^n X_i  
+\\ 0,\ ow\end{cases}$
+
+Let $\delta=\Large\frac{1}{n}\normalsize-1, then$
+
+$$\large Pr\{Y\ge B\}=Pr\{Y\ge (1+\left(\large\frac{1}{n}\normalsize- 1\right))E[Y]\}$$
+
+$$\large \le \left( \frac{e^{\normalsize\delta}}{(1+\delta)^{\normalsize1+\delta}}\right)^{\normalsize E(X)} = 
+\left( \frac{e^{\normalsize\left(\frac{1}{n}\normalsize-1\right)}}{(1+\Large\frac{1}{n}\normalsize-1)^{\normalsize1+\Large\frac{1}{n}\normalsize-1}}\right)^{\normalsize E(X)}$$
 
 
 
@@ -266,27 +345,28 @@ At every point $i$, $X_j$ is in the set $A_i$ with $Prob=S/i$
    * $Pr(X_{k+1} \text{ is an element of the set }A_{k+1})=S/K+1$
 
 2. `probability that some element is in the new set, given that it wasn't in the previous iteration`
-    * $Pr(X_j \text{ is an element of the set } A_{k+1}\| X_j\text{ is not in }A_k)=0$
+    * $Pr(X_j \text{ is an element of the set } A_{k+1}\mid X_j\text{ is not in }A_k)=0$
 
 3. `probability that some element is in the new and the previous one is EQUAL TO (1 - probability that element is in previous but not in the new set)`
-   * $Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1 - Pr(X_j \notin A_{k+1} \| X_j \in A_k)$`
+   * $Pr(X_j \in A_{k+1} \mid X_j \in A_k) = 1 - Pr(X_j \notin A_{k+1} \mid X_j \in A_k)$`
 
 4. `Pr(some element is in the new set) = Pr(element is in new set\|element is in previous set).Pr(element is in previous set) + Pr(element is in new set\|element is not in previous set).Pr(element is not in previous set)`
-   * $Pr(A) = Pr(A\|B) Pr(B) + Pr(A\|B^c).Pr(B^c)$
+   * $Pr(A) = Pr(A\mid B) Pr(B) + Pr(A\mid B^c).Pr(B^c)$
 
 So, $\text{Pr(element is new set|element is not in previous set) = 0}$
 
-Then, $Pr(X_j \in A_{k+1} ) = Pr(X_j \in A_{k+1}\|X_j \in A_k).Pr(X_j \in A_k) + 0*Pr(X_j \notin A_k)$
+Then, $Pr(X_j \in A_{k+1} ) = Pr(X_j \in A_{k+1}\mid X_j \in A_k).Pr(X_j \in A_k) + 0*Pr(X_j \notin A_k)$
 
 
-$Pr(X_j\in A_{k+1}\| X_j \in A_k) = 1-Pr(X_j \notin A_{k+1}\|X_j\in A_k)$
+$Pr(X_j\in A_{k+1}\mid X_j \in A_k) = 1-Pr(X_j \notin A_{k+1}\mid X_j\in A_k)$
 
 $\text{Pr(element is not in new set given that it is in the previous set)=Pr(element got booted in the current iteration }\times \text{which element got booted)} = S/(k+1) \times 1/S$
 
-$Pr(X_j \in A_{k+1} \| X_j \in A_k) = 1-S/(k+1) \times 1/S = k/(k+1)$
+$Pr(X_j \in A_{k+1} \mid X_j \in A_k) = 1-S/(k+1) \times 1/S = k/(k+1)$
 
-Finally, $Pr(X_j \in A_{k+1} ) = k/(k+1) \times S/k + 0 = S/(k+1)$
+$\text{Finally, }Pr(X_j \in A_{k+1} ) = k/(k+1) \times S/k + 0 = \Large \frac{S}{k+1}$
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
 ![](\linebreak-fire.png)
+
