@@ -182,12 +182,12 @@ We have two possible outcomes:
 1. $I_A = 1$ if the event $X\ge t$ occurs, and
 2. $I_A = 0$ if $X < t$. note that $t>0$
 
-$t.I_A \le X \rArr t.1 \le X$ if event occurs  and $t.I_A \le X \rArr t.0 \le X$ if event does not occur
+$t.I_A \le X ⇒ t.1 \le X$ if event occurs  and $t.I_A \le X ⇒ t.0 \le X$ if event does not occur
 
 1. $t\le X$ is **true**
 2. $0\le X$ also **true**
 
-therefore, $t.I_A \le X \ \ \rArr \ \ \large I_A\le\frac{X}{t}$ 
+therefore, $t.I_A \le X \ \ ⇒ \ \ \large I_A\le\frac{X}{t}$ 
 
 $\text{second: } \ I_A=[0,1], E(I_A) = Pr(I_A=1) = Pr(X\ge t)$
 
@@ -242,7 +242,7 @@ $\large n(1/m)(1 - 1/m) = np(1-p) = npq$
 
 # **Universal Hash Function**
 
-Let $U$ be a universe of keys and $H$ be a finite collection of hash functions $h:[u]\rarr[m]$
+Let $U$ be a universe of keys and $H$ be a finite collection of hash functions $h:[u]⇒[m]$
 
 $H$ is `universal` if
 
@@ -273,7 +273,7 @@ Let $X_1, X_2, ..., X_n$ be a Bernouli R.V. set $Pr\{X_i=1\}=P_i$, and can be wr
 
 `We want to know:` $Pr(Y\ge B):$
 
-Define $X_i = \begin{cases} 1, \ if\ i^{th }\text{ key maps to the block } \rArr\ Y = \large \sum_{i=1}^n X_i  
+Define $X_i = \begin{cases} 1, \ if\ i^{th }\text{ key maps to the block } ⇒\ Y = \large \sum_{i=1}^n X_i  
 \\ 0,\ ow\end{cases}$
 
 Let $\delta=\Large\frac{1}{n}\normalsize-1, then$
