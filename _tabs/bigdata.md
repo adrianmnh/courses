@@ -56,7 +56,7 @@ $E(X)=1/p \ \ \ and\ \ \ Var(X)=q/p^2$
 
 * Tail bounds
   * Markov's - $Pr(X \ge t)\leq \Large \frac{E(X)}{t}$
-  * ChebyShev's -  $Pr(\ \left|X-E(X)\right| \ge t\ )\le \Large \frac{Var[X]}{t^2}$
+  * ChebyShev's -  $Pr(X \ge t) \le Pr(\|X - E(X) \|\ge t )\le\Large \frac{Var(X)}{t^2}$
  
 
 
@@ -215,7 +215,7 @@ $$\large Pr(\ \left|X-E(X)\right| \ge t\ )\le \frac{Var[X]}{t^2}$$
 
 `proof:` 
 
-$\text{first: } \ Pr(\ \left|X-E(X)\right| \ge t\ ) = Pr(\ [X-E(X)]^2 \ge t^2\ )$ 
+$\text{first: } Pr(\|X-E(X)\| \ge t) = Pr([X-E(X)]^2 \ge t^2)$ 
 
 Since $[X-E(X)]^2$ is a non-negative r.v., apply Markov's
 
@@ -224,7 +224,7 @@ $\text{second: } \ Pr([X-E(X)]^2 \ge t^2) = E([X-E(X)]^2)/t^2$
 $\text{next: } \  E([X-E(X)]^2)/t^2 = Var(X)/ t^2$
 
 
-$\large \text{finally: } \ Pr([X-E(X)]^2 \ge t^2) = Pr(\ \left|X-E(X)\right| \ge t\ ) = \frac{\large Var[X]}{\Large t^2}$
+$\large \text{finally: } \ Pr([X-E(X)]^2 \ge t^2) = Pr(\ \|X-E(X)\| \ge t\ ) = \frac{\large Var[X]}{\Large t^2}$
 
 
 
